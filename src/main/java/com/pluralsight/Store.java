@@ -5,16 +5,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Starter code for the Online Store workshop.
- * Learners will complete the TODO sections to make the program work.
- * <p>
- * What is already done for you: the two lists, the Home Screen loop and
- * the method headers. Each TODO says what that method has to do.
- * Product.java is complete; products.csv sits at the project root.
- * You will need extra imports (for example java.io.BufferedReader,
- * java.io.FileReader, java.io.IOException) as you fill the TODOs in.
- */
+
 public class Store {
 
     public static void main(String[] args) {
@@ -54,18 +45,7 @@ public class Store {
         }
         scanner.close();
     }
-
-    /**
-     * Reads product data from a file and populates the inventory list.
-     * File format (pipe-delimited), the first line is a header row:
-     * SKU|Product Name|Price|Department
-     * <p>
-     * Example line:
-     * AV1051|JBL Bluetooth Speaker|89.95|Audio Video
-     */
     public static void loadInventory(String fileName, ArrayList<Product> inventory) {
-        // TODO: skip the header line, then read each line, split on "|",
-        //       create a Product object, and add it to the inventory list
 
         try (BufferedReader bufReader= new BufferedReader(new FileReader(fileName))) {
 
@@ -91,23 +71,9 @@ public class Store {
             System.out.println("file has an error");
         }
     }
-
-    /**
-     * Displays all products and lets the user add one to the cart.
-     * Typing X returns to the main menu.
-     */
-
-
-
-
-
-
-
     public static void displayProducts(ArrayList<Product> inventory,
                                        ArrayList<Product> cart,
                                        Scanner scanner) {
-        // TODO: show each product (id, name, price),
-        //       prompt for an id, find that product, add to cart
         for ( Product product : inventory) {
             System.out.println(product.getId() + " | " +
                     product.getInventry() + " | " +
@@ -127,12 +93,6 @@ public class Store {
             }
         }
     }
-
-
-    /**
-     * Shows the contents of the cart, calculates the total,
-     * and offers the option to check out.
-     */
     public static void displayCart(ArrayList<Product> cart, Scanner scanner) {
 
 
@@ -154,29 +114,16 @@ public class Store {
         System.out.println("Enter C to check out");
         System.out.println("Enter X to return to the menu");
 
+        String choice = scanner.nextLine();
 
-
-
-
-
-
-    // TODO:
-        //   • list each product in the cart
-        //   • compute the total cost
-        //   • ask the user whether to check out (C) or return (X)
-        //   • if C, call checkOut(cart, totalAmount, scanner)
+        if (choice.equalsIgnoreCase("C")) {
+            checkOut(cart, totalAmount, scanner);
+        }
     }
-
-    /**
-     * Handles the checkout process:
-     * 1. Confirm that the user wants to buy.
-     * 2. Accept payment and calculate change.
-     * 3. Display a simple receipt.
-     * 4. Clear the cart.
-     */
     public static void checkOut(ArrayList<Product> cart,
                                 double totalAmount,
                                 Scanner scanner) {
+        System.out.println("please enter payment amount ");
         double payment = scanner.nextDouble();
         scanner.nextLine();
         if (payment < totalAmount) {
@@ -192,20 +139,14 @@ public class Store {
                                 + product.getInventry() + " | "
                                 + product.getPrice()
                 );
-                System.out.println("you have " + change + " back");
+                System.out.println("your total is " + totalAmount + " and you have "+ change + " back");
             }
         }
 
 
 
-        // TODO: implement steps listed above
-    }
 
-    /**
-     * Searches a list for a product by its id.
-     *
-     * @return the matching Product, or null if not found
-     */
+    }
     public static Product findProductById(String id, ArrayList<Product> inventory) {
         // TODO: loop over the list and compare ids
         return null;
