@@ -23,6 +23,7 @@ public class Store {
         ArrayList<Product> inventory = new ArrayList<>();
         ArrayList<Product> cart = new ArrayList<>();
 
+
         // Load inventory from the data file (pipe-delimited: SKU|Product Name|Price|Department)
         loadInventory("products.csv", inventory);
 
@@ -110,25 +111,19 @@ public class Store {
         for ( Product product : inventory) {
             System.out.println(product.getId() + " | " + product.getInventry() + " | " + product.getPrice()
             + " | " + product.getType());
-            System.out.println(" would you like to go back to menu? ");
-
-
-
+            System.out.println(" would you like to make a purchase " + "\n or press x to return");
         }
         String exit = scanner.nextLine();
         if (exit.equalsIgnoreCase("x")) {
             return;
+        } for (Product product : inventory) {
+            if (product.getId().equalsIgnoreCase(exit)) {
+                cart.add(product);
+                System.out.println("Product added to cart.");
+            }
         }
-
-
-
-
-
-
-
-
-
     }
+
 
     /**
      * Shows the contents of the cart, calculates the total,
