@@ -99,7 +99,7 @@ displays the cart total, and processes checkout payments.
 
 Nahom Hagos
 
-- **Your Name**
+
 
 ## Thanks
 
