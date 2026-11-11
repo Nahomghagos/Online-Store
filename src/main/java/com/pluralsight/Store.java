@@ -109,10 +109,14 @@ public class Store {
         // TODO: show each product (id, name, price),
         //       prompt for an id, find that product, add to cart
         for ( Product product : inventory) {
-            System.out.println(product.getId() + " | " + product.getInventry() + " | " + product.getPrice()
-            + " | " + product.getType());
-            System.out.println(" would you like to make a purchase " + "\n or press x to return");
+            System.out.println(product.getId() + " | " +
+                    product.getInventry() + " | " +
+                    product.getPrice() + " | " +
+                    product.getType());
+
         }
+        System.out.println(" please enter ID if you would like to make a purchase " + "\n or press x to return");
+
         String exit = scanner.nextLine();
         if (exit.equalsIgnoreCase("x")) {
             return;
@@ -130,7 +134,33 @@ public class Store {
      * and offers the option to check out.
      */
     public static void displayCart(ArrayList<Product> cart, Scanner scanner) {
-        // TODO:
+
+
+        double totalAmount = 0;
+
+        System.out.println("Your Cart is currently :");
+
+        for (Product product : cart) {
+            System.out.println(
+                    product.getId() + " | " +
+                            product.getInventry() + " | " +
+                            product.getPrice()
+            );
+
+            totalAmount += product.getPrice();
+        }
+        System.out.println(totalAmount);
+
+        System.out.println("Enter C to check out");
+        System.out.println("Enter X to return to the menu");
+
+
+
+
+
+
+
+    // TODO:
         //   • list each product in the cart
         //   • compute the total cost
         //   • ask the user whether to check out (C) or return (X)
@@ -147,6 +177,27 @@ public class Store {
     public static void checkOut(ArrayList<Product> cart,
                                 double totalAmount,
                                 Scanner scanner) {
+        double payment = scanner.nextDouble();
+        scanner.nextLine();
+        if (payment < totalAmount) {
+            System.out.println("Payment is not enough. Please try again.");
+        } else {
+            double change = payment - totalAmount;
+
+            System.out.println("Receipt:");
+
+            for (Product product : cart) {
+                System.out.println(
+                        product.getId() + " | "
+                                + product.getInventry() + " | "
+                                + product.getPrice()
+                );
+                System.out.println("you have " + change + " back");
+            }
+        }
+
+
+
         // TODO: implement steps listed above
     }
 
