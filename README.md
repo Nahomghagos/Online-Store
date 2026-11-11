@@ -66,7 +66,7 @@ displays the cart total, and processes checkout payments.
      Optional GIF: LICEcap (free, Windows and Mac, <https://www.cockos.com/licecap/>) records a region of the
      screen straight to a .gif. Keep it under 10 seconds and under 10 MB, save it into `images`. -->
 
-![Main menu](ScreenRecording2026-11-10215605-ezgif.com-video-to-gif-converter.gif)
+![Main menu](ScreenRecording2026.gif)
 
 
 
